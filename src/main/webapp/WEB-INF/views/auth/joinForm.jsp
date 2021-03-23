@@ -21,7 +21,7 @@
                     <div class="login__form">
                         <h1><img src="/images/logo.jpg" alt=""></h1>
                      
-                        <form class="login__input" action="/auth/join"> 
+                        <form class="login__input" action="/auth/join" method="post"> 
                         <!-- 주소설계 /user 는 시큐리티에서 막힘 -->
                             <input type="text" name="username" placeholder="유저네임">
                             <input type="password" name="password" placeholder="비밀번호">
