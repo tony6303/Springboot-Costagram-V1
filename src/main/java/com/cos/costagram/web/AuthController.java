@@ -35,4 +35,5 @@ public class AuthController {
 		return Script.href("성공~", "/auth/loginForm");
 		//return "redirect:/auth/loginForm";
 	}
+	
 }

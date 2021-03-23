@@ -24,6 +24,7 @@ public class AuthService {
 		String rawPassword = user.getPassword(); // password 원문
 		String encPassword = encoder.encode(rawPassword); // 해쉬
 		user.setPassword(encPassword);
+		user.setRole("USER");
 		userRepository.save(user);
 	}
 	
