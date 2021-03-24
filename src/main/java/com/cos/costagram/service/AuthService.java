@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.costagram.domain.user.User;
 import com.cos.costagram.domain.user.UserRepository;
-import com.cos.costagram.web.auth.dto.UserJoinReqDto;
+import com.cos.costagram.web.dto.auth.UserJoinReqDto;
 
 import lombok.RequiredArgsConstructor;
 

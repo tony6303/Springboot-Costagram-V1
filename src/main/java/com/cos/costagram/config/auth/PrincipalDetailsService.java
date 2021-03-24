@@ -25,6 +25,7 @@ public class PrincipalDetailsService implements UserDetailsService{
 			return null;
 		}else {
 			return new PrincipalDetails(principal); // PrincipalDetails 는 UserDetails 를 상속받고있음.
+			// SecurityContextHolder => Authentication 객체 내부에 담김.
 		}
 	}
 

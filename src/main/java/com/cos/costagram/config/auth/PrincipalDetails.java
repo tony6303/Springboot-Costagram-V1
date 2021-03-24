@@ -15,15 +15,9 @@ import lombok.Data;
 public class PrincipalDetails implements UserDetails {
 	
 	private User user;
-	private Map<String, Object> attributes; // OAuth 제공자로부터 받은 회원정보
 	
 	public PrincipalDetails(User user) {
 		this.user = user;
-	}
-	
-	public PrincipalDetails(User user, Map<String, Object> attributes) {
-		this.user = user;
-		this.attributes = attributes;
 	}
 
 	@Override
@@ -31,7 +25,7 @@ public class PrincipalDetails implements UserDetails {
 		System.out.println("ROLE 검증 하는 중");
 		Collection<GrantedAuthority> collectors = new ArrayList<>();
 		// DB에 ROLE_USER 라고 저장하는건 별로 좋은방식이 아닌거같아요. 꺼내와서 쓸 때 붙여줍니다.
-		collectors.add(()->{ return "ROLE_"+user.getRole();});
+		collectors.add(()->{ return "ROLE_"+user.getRole().toString();});
 		return collectors;
 	}
 	

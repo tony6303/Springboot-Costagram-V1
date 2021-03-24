@@ -1,4 +1,4 @@
-package com.cos.costagram.domain.user;
+package com.cos.costagram.domain.comment;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.cos.costagram.domain.image.Image;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.cos.costagram.domain.likes.Likes;
+import com.cos.costagram.domain.tag.Tag;
+import com.cos.costagram.domain.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,31 +28,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(length = 30, unique = true)
-	private String username;
+	@Column(length = 100, nullable = false)
+	private String content;
 	
-	@JsonIgnore
-	private String password;
+	@JoinColumn(name = "imageId")
+	@ManyToOne
+	private Image image;
 	
-	private String name;
-	private String website;
-	private String bio;
-	private String email;
-	private String phone;
-	private String gender;
-	
-	private String profileImageUrl;
-	private String role; // USER , ADMIN
-	private String provider; // 제공자 naver, facebook ...
-	
-	@OneToMany(mappedBy = "user")
-	private List<Image> images;
+	@JoinColumn(name = "userId")
+	@ManyToOne	
+	private User user;
 	
 	@CreationTimestamp
 	private Timestamp createDate;

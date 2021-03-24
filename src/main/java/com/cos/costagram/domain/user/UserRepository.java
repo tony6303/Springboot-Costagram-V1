@@ -2,7 +2,7 @@ package com.cos.costagram.domain.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cos.costagram.web.auth.dto.UserJoinReqDto;
+import com.cos.costagram.web.dto.auth.UserJoinReqDto;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
