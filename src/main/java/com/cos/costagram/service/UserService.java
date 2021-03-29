@@ -1,9 +1,13 @@
 package com.cos.costagram.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.costagram.config.auth.PrincipalDetails;
+import com.cos.costagram.domain.follow.FollowRepository;
 import com.cos.costagram.domain.user.User;
 import com.cos.costagram.domain.user.UserRepository;
+import com.cos.costagram.web.user.UserProfileRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,8 +16,25 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
 	private final UserRepository userRepository;
+	private final FollowRepository followRepository;
 	
-	public void 회원프로필(int userId) {
-		User userEntity = userRepository.findById(userId).orElseThrow();
+		
+	@Transactional(readOnly = true)
+	public UserProfileRespDto 회원프로필(int userId, int principalDetails) {
+		UserProfileRespDto userProfileRespDto = new UserProfileRespDto();
+		
+		User userEntity = userRepository.findById(userId).orElseThrow(() -> {
+			return new IllegalArgumentException(); 
+		});
+		
+		int followState = followRepository.mFollowState(principalDetails, userId);
+		int followCount = followRepository.mFollowCount(userId);
+		
+		userProfileRespDto.setFollowState(followState == 1);
+		userProfileRespDto.setFollowCount(followCount);
+		userProfileRespDto.setImageCount(userEntity.getImages().size());
+		userProfileRespDto.setUser(userEntity);
+		
+		return userProfileRespDto;
 	}
 }

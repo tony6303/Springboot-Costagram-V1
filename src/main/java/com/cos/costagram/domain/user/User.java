@@ -35,7 +35,7 @@ public class User {
 	private String username;
 	
 	@JsonIgnore
-	private String password;
+	private String password; 
 	
 	private String name;
 	private String website;
@@ -45,7 +45,7 @@ public class User {
 	private String gender;
 	
 	private String profileImageUrl;
-	private String role; // USER , ADMIN
+	private String role; // USER , ADMIN 
 	private String provider; // 제공자 naver, facebook ...
 	
 	@OneToMany(mappedBy = "user")
