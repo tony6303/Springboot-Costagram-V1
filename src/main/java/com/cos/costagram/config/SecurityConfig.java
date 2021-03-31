@@ -30,15 +30,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		http.authorizeRequests()
-		.antMatchers("/", "/user/**", "/image/**", "/follow/**",  "/comment/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-		.anyRequest()
-		.permitAll()
+			.antMatchers("/", "/user/**", "/image/**", "/follow/**",  "/comment/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+			.anyRequest()
+			.permitAll()
 		.and()
-		.formLogin()
-		.loginPage("/auth/loginForm")
-		.loginProcessingUrl("/login") // post /login 주소를 디스패처가 확인하면 필터가 낚아챔
-		.defaultSuccessUrl("/");
+			.formLogin()
+			.loginPage("/auth/loginForm")
+			.loginProcessingUrl("/login") // post /login 주소를 디스패처가 확인하면 필터가 낚아챔
+			.defaultSuccessUrl("/");
 		// OAuth2.0 , CORS 는 나중에
 		
 		

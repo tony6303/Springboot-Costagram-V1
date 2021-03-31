@@ -1,5 +1,7 @@
 package com.cos.costagram.domain.follow;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,4 +30,6 @@ public interface FollowRepository extends JpaRepository<Follow, Integer> {
 	@Query(value = "select count(*) from follow where fromUserId = :userId", nativeQuery = true)
 	int mFollowCount(int userId);
 	
+	// naming query (간단한 쿼리만)
+	List<Follow> findByFromUserId(int userId);
 }

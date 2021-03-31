@@ -17,6 +17,8 @@ import com.cos.costagram.domain.image.Image;
 import com.cos.costagram.domain.likes.Likes;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,10 +36,12 @@ public class Follow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnoreProperties({"images"}) // 무한참조 방지. user 참조 -> image참조 -> user참조 ->
 	@JoinColumn(name = "fromUserId")
 	@ManyToOne
 	private User fromUser;  // ~로 부터
 	
+	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name = "toUserId")
 	@ManyToOne
 	private User toUser; // ~를

@@ -35,7 +35,17 @@ spring:
   security:
     user:
       name: aaaa
-      password: 1234   
+      password: 1234
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 1
+            client-secret: 1
+            scope:
+            - email
+            - public_profile
+             
 
 file:
-  path: D:\reactorwork\costagram\src\main\resources\upload
+  path: D:\reactorwork\costagram\src\main\resources\upload\

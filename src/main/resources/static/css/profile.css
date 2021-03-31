@@ -384,6 +384,7 @@
   display: flex;
   align-items: center;
 }
+/**
 .modal-follow .follower .follower-list .follower__item .follower__btn button {
   border: 0;
   background-color: #0095f6;
@@ -392,7 +393,8 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-}
+} 
+*/
 
 .cta {
   margin-right: 10px;

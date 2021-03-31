@@ -18,7 +18,7 @@ public class PrincipalDetails implements UserDetails {
 	
 	public PrincipalDetails(User user) {
 		this.user = user;
-	}
+	} 
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

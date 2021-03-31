@@ -44,7 +44,8 @@
                         <div class="login__facebook">
                             <button>
                                 <i class="fab fa-facebook-square"></i>
-                                <span>Facebook으로 로그인</span>
+                                <a href="/oauth2/authorization/facebook">
+                                <span>Facebook으로 로그인</span></a>
                             </button>
                         </div>
                         <!-- Oauth 소셜로그인end -->

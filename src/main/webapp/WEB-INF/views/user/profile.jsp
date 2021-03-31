@@ -2,6 +2,8 @@
 
 <%@ include file="../layout/header.jsp"%>
 
+<input type="hidden" id="userId" value="${dto.user.id }"/> 
+
  <!--프로필 섹션-->
     <section class="profile">
         <!--유저정보 컨테이너-->
@@ -29,11 +31,11 @@
                     </c:when>
                      <c:otherwise>
                       <c:choose>
-                       <c:when test="${dto.followState }">
-                         <button class="cta blue">구독취소</button>
+                       <c:when test="${dto.followState == true }">
+                         <button class="cta blue" onclick="mainFollowOrUnFollow(${dto.user.id })">구독취소</button>
                        </c:when>
                        <c:otherwise>
-                        <button class="cta">구독하기</button>
+                        <button class="cta" onclick="mainFollowOrUnFollow(${dto.user.id })">구독하기</button>
                        </c:otherwise>
                       </c:choose>
                      </c:otherwise>
@@ -67,7 +69,7 @@
                     <!--아이템들-->
                     <c:forEach var="image" items="${dto.user.images }">
                      <div class="img-box">
-                       <a href=""><img src="/images/profile.jpeg" alt=""></a>
+                       <a href=""><img src="/upload/${image.postImageUrl}" alt=""></a>
                        <div class="comment">
                            <a href="#a" class=""><i class="fas fa-heart"></i><span>${image.likeCount }</span></a>
                        </div>
@@ -112,21 +114,8 @@
             <!--팔로워 헤더end-->
             
             <!--팔로워 리스트-->
-            <div class="follower-list">
-                <div class="follower__item">
-                    <div class="follower__img"><img src="/images/profile.jpeg" alt=""></div>
-                    <div class="follower__text">
-                        <h2>아이디</h2>
-                    </div>
-                    <div class="follower__btn"><button onclick="clickFollow(this)">구독취소</button></div>
-                </div>
-                <div class="follower__item">
-                    <div class="follower__img"><img src="/images/profile.jpeg" alt=""></div>
-                    <div class="follower__text">
-                        <h2>아이디</h2>
-                    </div>
-                    <div class="follower__btn"><button onclick="clickFollow(this)">구독취소</button></div>
-                </div>
+            <div class="follower-list" id="follow-list">
+              
             </div>
             <!--팔로워 리스트end-->
         </div>
