@@ -13,7 +13,7 @@
 					<!--리스트 아이템 헤더영역-->
 					<div class="sl__item__header">
 						<div>
-							<img src="/images/profile.jpeg" alt="" />
+							<img src="/upload/${image.user.profileImageUrl}" alt=""  onerror="this.src='/images/person.jpeg'"/>
 							<svg viewbox="0 0 110 110">
                   <circle cx="55" cy="55" r="53" />
                 </svg>
@@ -31,22 +31,24 @@
 					<div class="sl__item__contents">
 						<!-- 하트모양 버튼 박스 -->
 						<div class="sl__item__contents__icon">
-							<button onclick="clickBtn()">
-                              <c:choose>                              
-                                <c:when test="${image.likeState}">
-                                 <i class="fas active fa-heart"></i>
-                                </c:when>
-                                <c:otherwise>
-                                <i class="far fa-heart"></i>
-                                </c:otherwise>
-                              </c:choose>
-								
-							</button>
+      
+                           <c:choose>               
+                             <c:when test="${image.likeState}">
+                               <button onclick="unLike(${image.id})">
+                               <i class="fas active fa-heart"></i>
+                               </button>
+                             </c:when>
+                             <c:otherwise>
+                               <button onclick="like(${image.id})">
+                               <i class="far fa-heart"></i>
+                               </button>
+                             </c:otherwise>
+                           </c:choose>
 						</div>
 						<!-- 하트모양 버튼 박스 end -->
 
 						<!--좋아요-->
-						<span class="like"><b>1</b>likes</span>
+						<span class="like"><b id="like_count_${image.id }">${image.likeCount }</b>likes</span>
 						<!--좋아요end-->
 
 						<!--태그박스-->

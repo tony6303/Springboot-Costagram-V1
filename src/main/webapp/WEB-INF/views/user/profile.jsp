@@ -12,7 +12,7 @@
             <!--유저이미지-->
             <div class="profile-left">
                 <div class="profile-img-wrap story-border" onclick="popup('.modal-image')">
-                    <img src="/images/profile.jpeg" alt="">
+                    <img src="/upload/${dto.user.profileImageUrl}" alt=""  onerror="this.src='/images/person.jpeg'"/>
                     <svg viewbox="0 0 110 110">
                         <circle cx="55" cy="55" r="53" />
                     </svg>
@@ -48,8 +48,8 @@
                     </ul>
                 </div>
                 <div class="state">
-                    <h4>${dto.user.bio }bio</h4>
-                    <h4>${dto.user.website }website</h4>
+                    <h4>자기소개 : ${dto.user.bio }</h4>
+                    <h4>웹사이트 : ${dto.user.website }</h4>
                 </div>
             </div>
             <!--유저정보 및 사진등록 구독하기-->

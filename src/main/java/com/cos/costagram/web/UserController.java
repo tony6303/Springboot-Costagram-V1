@@ -7,15 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.costagram.config.auth.PrincipalDetails;
 import com.cos.costagram.domain.follow.Follow;
+import com.cos.costagram.domain.user.User;
 import com.cos.costagram.service.FollowService;
 import com.cos.costagram.service.UserService;
 import com.cos.costagram.web.dto.CMRespDto;
 import com.cos.costagram.web.follow.FollowRespDto;
 import com.cos.costagram.web.user.UserProfileRespDto;
+import com.cos.costagram.web.user.UserUpdateReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -49,5 +53,22 @@ public class UserController {
 	@GetMapping("/user/{id}/profileSetting")
 	public String profileSetting(@PathVariable int id) {
 		return "user/profileSetting";
+	}
+	
+	// principal 세션 바꾸는 방법
+//	@PutMapping("/user/{userId}")
+//	public @ResponseBody CMRespDto<?> updateUser(@PathVariable int userId, @RequestBody UserUpdateReqDto userUpdateReqDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+//		User userEntity = userService.회원정보수정(userId, userUpdateReqDto);
+//		principalDetails.setUser(userEntity);
+//		return new CMRespDto<>(1, null);
+//	}
+	
+	// form 직렬화로 user 받아옴
+	@PutMapping("/user/{userId}")
+	public @ResponseBody CMRespDto<?> updateUser(@PathVariable int userId, User user, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println(user);
+		User userEntity = userService.회원정보수정(userId, user);
+		principalDetails.setUser(userEntity);
+		return new CMRespDto<>(1, null);
 	}
 }

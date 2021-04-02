@@ -24,7 +24,7 @@ document.querySelector("#subscribeBtn").onclick = (e) => {
 function makeSubscribeInfo(u){
   let item = `<div class="follower__item" id="follow-${u.userId}">`;
   item += `<div class="follower__img">`;
-  item += `<img src="/images/profile.jpeg" alt="">`;
+  item += `<img src="/upload/${u.profileImageUrl}" alt=""  onerror="this.src='/images/person.jpeg'"/>`;
   item += `</div>`;
   item += `<div class="follower__text">`;
   item += `<h2>${u.username}</h2>`;
@@ -157,4 +157,6 @@ function clickFollow(e) {
     _btn.style.color = "#fff";
     _btn.style.border = "0";
   }
+  
+ 
 }

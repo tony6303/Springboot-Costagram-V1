@@ -1,3 +1,47 @@
+function like(imageId){
+  let _buttonI = event.target;
+  
+  $.ajax({
+		  type: "POST",
+		  url: `/image/${imageId}/likes`,
+		  dataType: "json"
+	  }).done(res=>{
+		    let likeCountStr  = $(`#like_count_${imageId}`).text();
+		    //let likeCount = Number(likeCountStr) + 1;
+		    $(`#like_count_${imageId}`).text(Number(likeCountStr) + 1);
+		    
+		    _buttonI.classList.add("fas");
+		    _buttonI.classList.add("active");
+		    _buttonI.classList.remove("far");
+		    _buttonI.parentNode.removeAttribute("onclick");
+ 			_buttonI.parentNode.setAttribute("onclick",`unLike(${imageId})`)
+	  });
+
+  
+}
+
+function unLike(imageId){
+  let _buttonI = event.target;
+  
+   $.ajax({
+		  type: "DELETE",
+		  url: `/image/${imageId}/likes`,
+		  dataType: "json"
+	  }).done(res=>{
+		    let likeCountStr  = $(`#like_count_${imageId}`).text();
+		    //let likeCount = ;
+		    $(`#like_count_${imageId}`).text(Number(likeCountStr) - 1);
+		    
+		    _buttonI.classList.remove("fas");
+		    _buttonI.classList.remove("active");
+		    _buttonI.classList.add("far");
+		    _buttonI.parentNode.removeAttribute("onclick");
+  			_buttonI.parentNode.setAttribute("onclick",`like(${imageId})`)
+	  });    
+  
+}
+
+
 function clickBtn() {
   let _buttonI = event.target;
 
@@ -15,7 +59,7 @@ function clickBtn() {
 function addComment(postId, username) {
   // value : 댓글을 쓸 게시글
   let commentInput = event.path[1].children[0];
-  let commentList = event.path[2].children[3];
+  let commentList = event.path[2].children[4];
 
   // 유저 아이디 필요하면 매개변수로 받아와서 넣으면 됨.
   let _data = {
