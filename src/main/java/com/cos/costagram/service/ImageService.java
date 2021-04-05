@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,8 +41,8 @@ public class ImageService {
 		return imageRepository.findAll();
 	}
 	
-	public List<Image> 팔로우피드이미지(int principalId){
-		List<Image> images = imageRepository.followFeedImage(principalId);
+	public Page<Image> 팔로우피드이미지(int principalId, Pageable pageable){
+		Page<Image> images = imageRepository.followFeedImage(principalId, pageable);
 		
 		// like의 상태와 카운트를 처리하는 로직, image 에 likeState 변수를 새로 만들었음
 		// 뷰에서 연산을 하는것은 위험

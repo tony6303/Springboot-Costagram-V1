@@ -3,6 +3,7 @@ package com.cos.costagram.domain.image;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ import com.cos.costagram.domain.likes.Likes;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,18 +41,22 @@ public class Image {
 	private String postImageUrl; // 이미지 주소
 	
 	// FK의 주인인 곳에서 적어야 됨.
+	@JsonIgnoreProperties({"images"})
 	@ManyToOne // EAGER  User(1) - Image(n) 기본 EAGER , (fetch = FetchType.LAZY)  
 	@JoinColumn(name = "userId")
 	private User user;
 	
 	// Tag 가서 보면 됨 
 	// 이미지 테이블이 필요한 곳은 많은데, 항상 태그가 필요하지는 않다. 그래서 LAZY 방식을 사용
-	@OneToMany(mappedBy = "image") // LAZY  Image(1) - Tag(n)
+	@JsonIgnoreProperties({"image"})
+	@OneToMany(mappedBy = "image", cascade = CascadeType.REMOVE) // LAZY  Image(1) - Tag(n)
 	private List<Tag> tags;
 	
+	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image") // Image(1) - likes(n)
 	private List<Likes> likes;
 	
+	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Comment> comments;
 	

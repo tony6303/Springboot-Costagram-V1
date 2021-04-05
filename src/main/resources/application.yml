@@ -48,4 +48,5 @@ spring:
              
 
 file:
-  path: D:\reactorwork\costagram\src\main\resources\upload\
+  path: C:\Users\tony6\Desktop\costagram\Springboot-Costagram-V1\src\main\resources\upload\
+  #path: D:\reactorwork\costagram\src\main\resources\upload\
