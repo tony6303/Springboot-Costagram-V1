@@ -17,9 +17,9 @@ import com.cos.costagram.domain.user.User;
 import com.cos.costagram.service.FollowService;
 import com.cos.costagram.service.UserService;
 import com.cos.costagram.web.dto.CMRespDto;
-import com.cos.costagram.web.follow.FollowRespDto;
-import com.cos.costagram.web.user.UserProfileRespDto;
-import com.cos.costagram.web.user.UserUpdateReqDto;
+import com.cos.costagram.web.dto.follow.FollowRespDto;
+import com.cos.costagram.web.dto.user.UserProfileRespDto;
+import com.cos.costagram.web.dto.user.UserUpdateReqDto;
 
 import lombok.RequiredArgsConstructor;
 

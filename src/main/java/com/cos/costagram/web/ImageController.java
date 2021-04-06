@@ -13,7 +13,7 @@ import com.cos.costagram.config.auth.PrincipalDetails;
 import com.cos.costagram.service.ImageService;
 import com.cos.costagram.service.LikesService;
 import com.cos.costagram.web.dto.CMRespDto;
-import com.cos.costagram.web.image.ImageReqDto;
+import com.cos.costagram.web.dto.image.ImageReqDto;
 
 import lombok.RequiredArgsConstructor;
 

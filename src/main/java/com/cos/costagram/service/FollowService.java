@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.costagram.domain.follow.Follow;
 import com.cos.costagram.domain.follow.FollowRepository;
-import com.cos.costagram.web.follow.FollowRespDto;
+import com.cos.costagram.web.dto.follow.FollowRespDto;
 
 import lombok.RequiredArgsConstructor;
 

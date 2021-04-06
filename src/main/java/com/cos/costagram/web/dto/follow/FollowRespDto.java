@@ -1,4 +1,4 @@
-package com.cos.costagram.web.follow;
+package com.cos.costagram.web.dto.follow;
 
 import java.math.BigInteger;
 

@@ -16,7 +16,7 @@ import com.cos.costagram.domain.image.ImageRepository;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.tag.TagRepository;
 import com.cos.costagram.utils.TagUtils;
-import com.cos.costagram.web.image.ImageReqDto;
+import com.cos.costagram.web.dto.image.ImageReqDto;
 
 import lombok.RequiredArgsConstructor;
 

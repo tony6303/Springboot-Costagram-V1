@@ -12,8 +12,8 @@ import com.cos.costagram.domain.image.Image;
 import com.cos.costagram.domain.image.ImageRepository;
 import com.cos.costagram.domain.user.User;
 import com.cos.costagram.domain.user.UserRepository;
-import com.cos.costagram.web.user.UserProfileRespDto;
-import com.cos.costagram.web.user.UserUpdateReqDto;
+import com.cos.costagram.web.dto.user.UserProfileRespDto;
+import com.cos.costagram.web.dto.user.UserUpdateReqDto;
 
 import lombok.RequiredArgsConstructor;
 

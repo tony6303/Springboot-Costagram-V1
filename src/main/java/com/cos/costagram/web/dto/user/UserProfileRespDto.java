@@ -1,4 +1,4 @@
-package com.cos.costagram.web.user;
+package com.cos.costagram.web.dto.user;
 
 import javax.persistence.Entity;
 

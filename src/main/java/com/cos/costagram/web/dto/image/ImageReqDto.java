@@ -1,4 +1,4 @@
-package com.cos.costagram.web.image;
+package com.cos.costagram.web.dto.image;
 
 import org.springframework.web.multipart.MultipartFile;
 
