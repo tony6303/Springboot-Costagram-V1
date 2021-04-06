@@ -62,7 +62,7 @@
                     <div class="content-item__07">
                         <div class="item__title">이메일</div>
                         <div class="item__input">
-                            <input type="text" id="email" name="email" placeholder="이메일" value="${principal.user.email}" readonly="readonly"/>
+                            <input type="text" id="email" name="email" placeholder="이메일" value="${principal.user.email}"/>
                         </div>
                     </div>
                     <div class="content-item__08">
