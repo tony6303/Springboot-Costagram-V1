@@ -17,6 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.cos.costagram.domain.image.Image;
 import com.cos.costagram.domain.tag.Tag;
 import com.cos.costagram.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,6 +47,7 @@ public class Likes {
 	@JoinColumn(name = "imageId")  
 	private Image image;  // 어떤 이미지에 좋아요 했는지.
 	
+	@JsonIgnoreProperties({"images"})
 	@ManyToOne // User (1) - Likes (n)
 	@JoinColumn(name = "userId")  
 	private User user;

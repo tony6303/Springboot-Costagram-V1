@@ -45,5 +45,12 @@ create user 'costa'@'%' identified by 'costa1234';
 GRANT ALL PRIVILEGES ON *.* TO 'costa'@'%';
 create database costa;
 
+```  
+
+```apllication.yml  
+file:
+  path: projectPath\src\main\resources\upload\
+  #자신의 경로에 맞게 세팅
 ```
+
 
