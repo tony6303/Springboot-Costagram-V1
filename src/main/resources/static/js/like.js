@@ -56,7 +56,8 @@ function clickBtn() {
   }
 }
 
-function addComment(postId, username) {
+// image.js에 정의 함
+/*function addComment(postId, username) {
   // value : 댓글을 쓸 게시글
   let commentInput = event.path[1].children[0];
   let commentList = event.path[2].children[4];
@@ -98,7 +99,7 @@ function addComment(postId, username) {
   //     commentList.insertAdjacentElement("afterbegin", content);
   //     commentInput.value = "";
   //   });
-}
+}*/
 
 function deleteComment(commentId) {
   alert("test");

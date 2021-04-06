@@ -10,6 +10,7 @@
 	</section>
 </main>
 <script src="/js/like.js"></script>
+<script src="/js/comment.js"></script>
 <script src="/js/image.js"></script>
 </body>
 </html>

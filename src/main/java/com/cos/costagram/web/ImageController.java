@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.costagram.config.auth.PrincipalDetails;
+import com.cos.costagram.domain.comment.Comment;
 import com.cos.costagram.domain.image.Image;
+import com.cos.costagram.service.CommentService;
 import com.cos.costagram.service.ImageService;
 import com.cos.costagram.service.LikesService;
 import com.cos.costagram.web.dto.CMRespDto;
@@ -72,5 +75,14 @@ public class ImageController {
 		model.addAttribute("images", imageService.인기사진(principalDetails.getUser().getId()));
 
 		return "image/explore";
+	}
+	
+	private final CommentService commentService;
+	
+	@PostMapping("/image/{imageId}/comment")
+	public @ResponseBody CMRespDto<?> saveComment(@RequestBody String content, @PathVariable int imageId, @AuthenticationPrincipal PrincipalDetails principalDetails){
+		Comment commentEntity = commentService.댓글쓰기(content, imageId, principalDetails.getUser());
+		
+		return new CMRespDto<>(1, commentEntity);
 	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -56,6 +57,7 @@ public class Image {
 	@OneToMany(mappedBy = "image") // Image(1) - likes(n)
 	private List<Likes> likes;
 	
+	@OrderBy("id DESC")
 	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Comment> comments;
